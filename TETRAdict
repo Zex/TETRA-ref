@@ -1,0 +1,48 @@
+TIB:TETRA Indoor Base Transceiver
+PPS:Pulse Per Second
+AGW:Application Gateway
+AEOS:ACCESSNET Embedded Operating System
+AFS:Activated Feature Set
+BS:Base Station
+BSCU:Base Station Controller Unit
+BSF:Base Station Function
+CHU:Channel Unit
+COMU:Combiner Unit
+CM:Circuit Mode
+CMoIP:Circuit Mode over IP
+COS:Core Operating Server
+DIB-NG:Digital Indoor Base Station-Next Gereration
+DIU:Power Divider(for RX-Path)
+DL-Server:Download-Server
+DPLL:Digital Phase Locked Loop
+DSP:Digital Signal Processor
+GNSS:Global Navigation Satellite System
+GPS:Global Positioning System
+IPN:IP Node
+IPS:IP Switch(Software component for switching the TETRA IP packets)
+IRU:Interconnect Relay Unit
+MASTER:DIB-CP-operation mode, with GNSS-connectivity for provisioning the position and set the system time
+MCB:Main Control Board
+NEM:Network Element manager
+NMS:Network Management System
+NTPD:Network Time Protocol Daemon
+OCXO:Oven Controlled Oscillator
+PDS:Packet Data Server
+PGW:Packet Data Gateway
+PSU:Power Supply Unit
+PV:Packet Version
+SCB:Connection Board
+SCF:Switching Controlling Function
+SLAVE:DIB-CP-operation mode, without GNSS-connectivity. The system time will be set by the NTPD from a configured time source.
+SMG:SIP Media Gateway
+SysML:System Modelling Platform
+TAP:TETRA Application Platform
+TGW:Telephony Gateway
+TOS:TETRA Operation Server
+VSWR:Voltage Standing Wave Ratio
+STP:SW Test Plan
+SAD:System Architecture Document
+LAD:List of All Documents
+SDD:Software Design Description
+PGW:Packet Data Gateway
+PEI:Peripheral Equiment Interface
