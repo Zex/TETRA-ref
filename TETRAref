@@ -1,0 +1,121 @@
+#!/usr/bin/python
+'''
+TETRAref
+TETRA keywords reference
+
+Author: Zex
+'''
+
+import signal
+import sys
+import string
+
+DICT_FILE = 'TETRAdict'
+TETRA_DICT = {}
+
+def TETRA_dict_init():
+
+  fd = open(DICT_FILE)
+	buf = fd.readlines()
+	fd.close()
+
+	for line in buf:
+		items = line.split(':')
+		TETRA_DICT[items[0]] = items[1].replace('\n','\0')
+	
+
+def TETRAref(key):
+
+	for x in TETRA_DICT.keys():
+		if x == key:
+			return TETRA_DICT[key]
+
+def sigquit_handler(signo, frame):
+	print '\nplease type \'quit\' to exit TETRAref'
+
+def print_notation():
+	print 'TETRAref - provides TETRA abbreviates query service'
+	print 'Author: Zex (top_zlynch@yahoo.com)'
+	print 'get help with \'help\', quit with \'quit\''
+	print 'Enjoy it :)'
+	print
+
+def print_help():
+	print 'help\t- display this help infomation'
+	print 'quit\t- leave TETRAref'
+	print 'prompt\t- change prompt string'
+	print 'add\t- add aggreviate and full name pair'
+	print '[aggreviate-string]\t- display full name of the [aggreviate-string]'
+	print
+
+def add_dict_item():
+
+	try:
+		newkey, newvalue = raw_input(
+			'new pair, such as \'key--value\'\nadd item>').split('--')
+	except ValueError:
+		sys.stderr.write('key-value pair is needed\n')
+		return
+
+	if not (newkey and newvalue):return
+
+	for x in xrange(len(newkey)-1):
+		if newkey.split()[x] not in string.letters:
+			sys.stderr.write('only letters are allowed\n')
+			return
+	for x in xrange(len(newvalue)-1):
+		if newvalue.split()[x] not in string.letters:
+			sys.stderr.write('only letters are allowed\n')
+			return
+
+	TETRA_DICT[newkey] = newvalue
+	
+	fd = open(DICT_FILE, 'a')
+	fd.write(newkey+':'+newvalue)
+	fd.close()
+
+if __name__ == '__main__':
+
+	TETRA_dict_init()
+
+	print_notation()
+
+	key = ''
+	prompt_string = 'TETRA keyword :>'
+	signal.signal(signal.SIGQUIT, sigquit_handler)
+
+	while key != 'quit':
+		try:
+			key = raw_input(prompt_string)
+		except KeyboardInterrupt:
+			print '\nplease type \'quit\' to exit TETRAref'
+			continue
+		except EOFError:
+			print '\nplease type \'quit\' to exit TETRAref'
+			continue
+
+		if key == 'quit': continue
+		if key == 'help':
+			print_help()
+			continue
+		if key == 'prompt':
+			newone = raw_input('new prompt:')
+			if newone:
+				prompt_string = newone
+			continue
+		if key == 'add':
+			add_dict_item()
+			continue
+
+		reply = TETRAref(key)
+
+		if reply == None:
+			sys.stdout.write(
+				'\nKey ' + key + ' doen\'t exists'
+				' in TETRA dictionary, you may'
+				' type \'add\' command to\n'
+				'insert new key-value pair'
+				' to the dictionary.\n\n')
+			continue
+
+		print reply
