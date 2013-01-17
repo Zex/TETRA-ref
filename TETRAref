@@ -15,7 +15,7 @@ TETRA_DICT = {}
 
 def TETRA_dict_init():
 
-  fd = open(DICT_FILE)
+	fd = open(DICT_FILE)
 	buf = fd.readlines()
 	fd.close()
 
@@ -57,21 +57,25 @@ def add_dict_item():
 		sys.stderr.write('key-value pair is needed\n')
 		return
 
-	if not (newkey and newvalue):return
+	if not (newkey and newvalue):
+		sys.stderr.write('key-value pair is needed\n')
+		return
+
+	if newkey in TETRA_DICT.keys(): 
+		sys.stderr.write('key ' + newkey + ' exists\n')
+		ans = raw_input('update it?[y/n]')
+		if not ans or ans != 'y': return
 
 	for x in xrange(len(newkey)-1):
-		if newkey.split()[x] not in string.letters:
-			sys.stderr.write('only letters are allowed\n')
-			return
-	for x in xrange(len(newvalue)-1):
-		if newvalue.split()[x] not in string.letters:
-			sys.stderr.write('only letters are allowed\n')
+		if list(newkey)[x] not in string.letters\
+			and list(newkey)[x] != '-':
+			sys.stderr.write('only letters or \'-\' are allowed\n')
 			return
 
 	TETRA_DICT[newkey] = newvalue
 	
 	fd = open(DICT_FILE, 'a')
-	fd.write(newkey+':'+newvalue)
+	fd.write(newkey+':'+newvalue+'\n')
 	fd.close()
 
 if __name__ == '__main__':
