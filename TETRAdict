@@ -46,3 +46,8 @@ LAD:List of All Documents
 SDD:Software Design Description
 PGW:Packet Data Gateway
 PEI:Peripheral Equiment Interface
+BCE:Base Station Control Entity
+HAL:Hardware Abstraction Layer
+CL:Control Layer
+CDR:Call Detail Records
+DCD:Device Component Descriptor
