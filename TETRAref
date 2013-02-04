@@ -1,3 +1,4 @@
+
 #!/usr/bin/python
 '''
 TETRAref
@@ -9,6 +10,8 @@ Author: Zex
 import signal
 import sys
 import string
+import binhex
+
 
 DICT_FILE = 'TETRAdict'
 TETRA_DICT = {}
@@ -24,6 +27,10 @@ def TETRA_dict_init():
 		TETRA_DICT[items[0]] = items[1].replace('\n','\0')
 	
 
+def update_database():
+	binhex.binhex(DICT_FILE, '.DICT_FILE.TMP')
+	binhex.hexbin('.DICT_FILE.TMP', DICT_FILE)
+
 def TETRAref(key):
 
 	for x in TETRA_DICT.keys():
@@ -34,7 +41,7 @@ def sigquit_handler(signo, frame):
 	print '\nplease type \'quit\' to exit TETRAref'
 
 def print_notation():
-	print 'TETRAref - provides TETRA abbreviates query service'
+	print 'TETRAref - provides TETRA abbreviations query service'
 	print 'Author: Zex (top_zlynch@yahoo.com)'
 	print 'get help with \'help\', quit with \'quit\''
 	print 'Enjoy it :)'
@@ -45,10 +52,22 @@ def print_help():
 	print 'quit\t- leave TETRAref'
 	print 'prompt\t- change prompt string'
 	print 'add\t- add aggreviate and full name pair'
+	print 'all\t- list all abbreviations'
 	print '[aggreviate-string]\t- display full name of the [aggreviate-string]'
 	print
 
+def all_abbreviation():
+
+	fd = open(DICT_FILE, 'r')
+	bf = fd.read()
+	fd.close()
+
+	print '\n'.join(sorted(bf.split('\n')))
+
+
 def add_dict_item():
+
+	omod = 'a'
 
 	try:
 		newkey, newvalue = raw_input(
@@ -65,17 +84,23 @@ def add_dict_item():
 		sys.stderr.write('key ' + newkey + ' exists\n')
 		ans = raw_input('update it?[y/n]')
 		if not ans or ans != 'y': return
+		omod = 'w'
 
 	for x in xrange(len(newkey)-1):
-		if list(newkey)[x] not in string.letters\
-			and list(newkey)[x] != '-':
-			sys.stderr.write('only letters or \'-\' are allowed\n')
+		if (list(newkey)[x] not in string.printable):
+			sys.stderr.write('only printable characters are allowed\n')
 			return
 
 	TETRA_DICT[newkey] = newvalue
 	
-	fd = open(DICT_FILE, 'a')
-	fd.write(newkey+':'+newvalue+'\n')
+	fd = open(DICT_FILE, omod)
+
+	if omod == 'a':
+		fd.write(newkey+':'+newvalue+'\n')
+	elif omod == 'w':
+		for nk, nv in zip(TETRA_DICT.keys(), TETRA_DICT.values()):
+			fd.write(nk+':'+nv+'\n')
+
 	fd.close()
 
 if __name__ == '__main__':
@@ -98,6 +123,8 @@ if __name__ == '__main__':
 			print '\nplease type \'quit\' to exit TETRAref'
 			continue
 
+		if not key: continue
+
 		if key == 'quit': continue
 		if key == 'help':
 			print_help()
@@ -109,6 +136,10 @@ if __name__ == '__main__':
 			continue
 		if key == 'add':
 			add_dict_item()
+			continue
+
+		if key == 'all':
+			all_abbreviation()
 			continue
 
 		reply = TETRAref(key)
@@ -123,3 +154,4 @@ if __name__ == '__main__':
 			continue
 
 		print reply
+
