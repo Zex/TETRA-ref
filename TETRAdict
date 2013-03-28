@@ -1,53 +1,77 @@
-TIB:TETRA Indoor Base Transceiver
-PPS:Pulse Per Second
-AGW:Application Gateway
-AEOS:ACCESSNET Embedded Operating System
-AFS:Activated Feature Set
-BS:Base Station
-BSCU:Base Station Controller Unit
-BSF:Base Station Function
-CHU:Channel Unit
-COMU:Combiner Unit
-CM:Circuit Mode
-CMoIP:Circuit Mode over IP
-COS:Core Operating Server
-DIB-NG:Digital Indoor Base Station-Next Gereration
-DIU:Power Divider(for RX-Path)
-DL-Server:Download-Server
 DPLL:Digital Phase Locked Loop
-DSP:Digital Signal Processor
-GNSS:Global Navigation Satellite System
-GPS:Global Positioning System
-IPN:IP Node
-IPS:IP Switch(Software component for switching the TETRA IP packets)
-IRU:Interconnect Relay Unit
-MASTER:DIB-CP-operation mode, with GNSS-connectivity for provisioning the position and set the system time
-MCB:Main Control Board
+COS:Core Operating Server
 NEM:Network Element manager
 NMS:Network Management System
-NTPD:Network Time Protocol Daemon
-OCXO:Oven Controlled Oscillator
-PDS:Packet Data Server
-PGW:Packet Data Gateway
-PSU:Power Supply Unit
-PV:Packet Version
-SCB:Connection Board
-SCF:Switching Controlling Function
-SLAVE:DIB-CP-operation mode, without GNSS-connectivity. The system time will be set by the NTPD from a configured time source.
-SMG:SIP Media Gateway
-SysML:System Modelling Platform
-TAP:TETRA Application Platform
-TGW:Telephony Gateway
 TOS:TETRA Operation Server
-VSWR:Voltage Standing Wave Ratio
-STP:SW Test Plan
-SAD:System Architecture Document
-LAD:List of All Documents
-SDD:Software Design Description
-PGW:Packet Data Gateway
+SMG:SIP Media Gateway
 PEI:Peripheral Equiment Interface
-BCE:Base Station Control Entity
-HAL:Hardware Abstraction Layer
-CL:Control Layer
-CDR:Call Detail Records
+BS:Base Station
+AGW:Application Gateway
+DIU:Power Divider(for RX-Path)
+SAD:System Architecture Document
+TIB:TETRA Indoor Base Transceiver
+PV:Packet Version
+TGW:Telephony Gateway
+IPS:IP Switch(Software component for switching the TETRA IP packets)
 DCD:Device Component Descriptor
+SCF:Switching Controlling Function
+DL-Server:Download-Server
+SCB:Connection Board
+PPS:Pulse Per Second
+PGW:Packet Data Gateway
+MASTER:DIB-CP-operation mode, with GNSS-connectivity for provisioning the position and set the system time
+BCE:Base Station Control Entity
+BSF:Base Station Function
+AFS:Activated Feature Set
+SysML:System Modelling Platform
+AEOS:ACCESSNET Embedded Operating System
+AIE:Air Interface Encryption
+HAL:Hardware Abstraction Layer
+CM:Circuit Mode
+CL:Control Layer
+PDS:Packet Data Server
+COMU:Combiner Unit
+IRU:Interconnect Relay Unit
+DSP:Digital Signal Processor
+TAP:TETRA Application Platform
+GNSS:Global Navigation Satellite System
+STP:SW Test Plan
+CHU:Channel Unit
+SLAVE:DIB-CP-operation mode, without GNSS-connectivity. The system time will be set by the NTPD from a configured time source.
+GPS:Global Positioning System
+BSCU:Base Station Controller Unit
+LAD:List of All Documents
+IPN:IP Node
+MCB:Main Control Board
+SDD:Software Design Description
+DIB-NG:Digital Indoor Base Station-Next Gereration
+CMoIP:Circuit Mode over IP
+CDR:Call Detail Records
+VSWR:Voltage Standing Wave Ratio
+OCXO:Oven Controlled Oscillator
+NTPD:Network Time Protocol Daemon
+PSU:Power Supply Unit
+DIB:Digital Indoor Base Station
+MACD:MAC Deamon
+UMAC:Upper MAC
+LMAC:Lower MAC
+DCK:Derived Cipher Key
+UPS:Uninterruptible Power Supply
+EIB:BS External Interface Board
+DPDU:DC Power Distribution Unit
+APDU:AC Power Distribution Unit
+HP:1HP=5.08mm
+U:1U=44.45mm
+RX:Receiver port
+TX:Transmitter port
+FAN:Fan unit
+ESN:Electronic Serial Number
+MPU:Memory Protection Unit
+BSC:Base Station Controller
+DOB:Digital Outdoor Base Station
+HU:Height Unit
+PABX:Private Automatic Branch eXchange
+PUC:Processing Unit Controller
+RMS:Rack Monitoring System
+BSD:Base Station Distributor
+RBS:Relay Base Station
